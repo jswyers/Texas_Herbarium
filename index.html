@@ -108,7 +108,7 @@
                     </div>
                  </div>
             </div>       
-           <!-- The div where we will inject our map -->
+           <!-- Inject the map -->
            <div class="leaflet-container" id="map"></div>
         </div>
       </div>
@@ -121,8 +121,8 @@
         zoom: 6
         });
 
-      // Adding a tile layer (the background map image) to our map
-      // We use the addTo method to add objects to our map
+      // Add a tile layer
+     
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
         "access_token=pk.eyJ1IjoianN3eWVycyIsImEiOiJjamRoazc4dTkwem1mMnZucXVzbWM4cmUwIn0.ZmFC4Am6nFR2_e1Q8jg6Fg"
@@ -133,16 +133,12 @@
       };
 
       function getData(family) {
-        // Use a request to grab the json data needed for the map and image div
+      // Use a request to grab the json data needed for the map and image div
         url = `/families/${family}` 
         d3.json(url, function(error, response) {
             if (error) return console.warn(error);
             //console.log(response);
             updateMap(response);
-
-      
-
-
             });
           };
 
@@ -174,7 +170,7 @@
       'Solanaceae',
       'Taxodiaceae','Zygophyllaceae']
 
-          var common_names = ['Carrot family','Daisy family','Forget-me-not family','Mustard family','Goosefoot family',
+      var common_names = ['Carrot family','Daisy family','Forget-me-not family','Mustard family','Goosefoot family',
       'Conifer family',
       'Sedge family',
       'Spurge family',
@@ -203,13 +199,13 @@
 
   
       // Build dropdown selections
-    var selector = document.getElementById('selDataset');
-    for (var i = 0; i < families.length;  i++) {
-      var currentOption = document.createElement('option');
-      currentOption.text = common_names[i];
-      currentOption.value = families[i]
-      selector.appendChild(currentOption);
-};
+      var selector = document.getElementById('selDataset');
+      for (var i = 0; i < families.length;  i++) {
+         currentOption = document.createElement('option');
+        currentOption.text = common_names[i];
+        currentOption.value = families[i]
+        selector.appendChild(currentOption);
+      };
     // Add species markers and overlay when family is chosen by dropdown
     function updateMap(newFamily) {
     var reducedFamily = [];
@@ -253,8 +249,6 @@
                             '<img src='+ sortedFamily[i][10] + '  alt="No image available" height="150" width="100">' +
                             '<p><a href=' + sortedFamily[i][9] + ' target="_blank">Larger Image</a></p>');
               speciesLayer.push(circle);
-              //console.log(sortedFamily[i][1],sortedFamily[i][2],sortedFamily[i][3]);
-              //console.log(sortedFamily[i][10]);
           }
           else {
               colorSeed ++;
@@ -281,56 +275,13 @@
                             '<p><a href=' + sortedFamily[i][9] + ' target="_blank">Larger Image</a></p>');
               speciesLayer.push(circle);
               currentSpecies = sortedFamily[i][1];
-            // console.log('b');
-            // console.log(overlayMaps);
           }; 
       };  
       
       var finalMap = L.control.layers(baseMaps,overlayMaps,{collapsed: false});
       finalMap.addTo(myMap);
   };
-
-
-        </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">We've got what you need!</h2>
-            <hr class="light my-4">
-            <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
-          </div>
-        </div>
-      </div> -->
+      </script>
     </section>
 
     <!--<section id="services">
@@ -397,7 +348,7 @@
         <div class="row no-gutters popup-gallery">
           <div class="col-lg-4 col-sm-4">
             <a class="portfolio-box" href="/static/img/co_plot.png">
-              <img class="img-fluid" src="/static/img/co_plot.png">
+              <img class="img-fluid" src="/static/img/co_plot.png" alt="">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
@@ -488,13 +439,6 @@
         </div>
       </div>
     </section>
-
-    <!--<section class="bg-dark text-white">
-      <div class="container text-center">
-        <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
-      </div>
-    </section> -->
 
     <section class="bg-primary" id="data">
       <div class="container">
