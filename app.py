@@ -15,10 +15,11 @@ mongo = PyMongo(app)
 #conn = 'mongodb://localhost:27017'
 #conn = 'mongodb://heroku_v48x034t:jio36bl8srlsqnvufrlieuk9jt@ds241025.mlab.com:41025/heroku_v48x034t'
 #mongodb://<dbuser>:<dbpassword>@ds137739-a0.mlab.com:37739,ds137739-a1.mlab.com:37739/<dbname>?replicaSet=rs-ds137739
-conn = 'mongodb://heroku_t3dblzz7:jio36bl8srlsqnvufrlieuk9jt@ds137739-a0.mlab.com:37739,ds137739-a1.mlab.com:37739/heroku_t3dblzz7'
+conn = 'mongodb://production:Prod86509uction@ds137739-a0.mlab.com:37739,ds137739-a1.mlab.com:37739/heroku_t3dblzz7?replicaSet=rs-ds137739'
 #conn = 'mongodb://heroku_v48x034t:jio36bl8srlsqnvufrlieuk9jt@ds241025.mlab.com:41025/heroku_v48x034t'
 client = pymongo.MongoClient(conn)
-db = client.v48x034t
+#db = client.v48x034t
+db = client.heroku_t3dblzz7
 #collection = db.myCollection
 
 #MONGODB_URI = os.environ.get('MONGODB_URI')
